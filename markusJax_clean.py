@@ -19,3 +19,7 @@ print("Input:", X[0, 0, :])
 print("Output:", Y[0, 0, :])
 
 print("\nValmis! Shape-contract pidetty.")
+
+
+# HOX INARI !! LUE TÄMÄ HUOLELLA !! HOX INARI !!
+
