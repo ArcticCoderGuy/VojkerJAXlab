@@ -27,7 +27,7 @@ X = jnp.array([
   [1,4,0,2,3] # slice 5: cheese 1, Pepperoni 4, Mushroom 0, Onion 2, Olive 3
   [0,0,5,1,0] # slice 6: cheese 0, Pepperoni 0, Mushroom 5, Onion 1, Olive 0
   [2,1,3,0,4] # slice 7: cheese 2, Pepperoni 1, Mushroom 3, Onion 0 , Olive 4
-   [1,2,1,4 ,2] # slice8: cheese1 , Pepperoni2 , Mushroom1 , Onion4 , Olive2
+   [1,2,1,4,2] # slice8: cheese1 , Pepperoni2 , Mushroom1 , Onion4 , Olive2
    
   
 ]).astype(jnp.float32) # shape (n, d) = (8, 5)
@@ -40,6 +40,20 @@ X = jnp.array([
 print("\n Weighted toppings created -> shape check:")
 print(f" X.shape == (n, d), f"cancel ! Pizza should be ({n}, {d}) but got {X.shape}")
 print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: defining the weights and calculating the output tensor Y.")      
+
+# We shot the first slice to understand the shape-contracts
+print("first slice (line 0):", X[0, :])
+
+#3. Create/define the weights W (shape: d, 1)- each topping get´s it´s own weighted value-rating
+W = jnp.array([1.5, 2.0, 0.5, 1.0, 0.8])[:, None] # Cheese has the most weight, then pepperoni, then onion, then olive and mushroom has no weight at all. Shape (d, 1) = (5, 1)
+
+#Cpk 3.0: Print + Check the shape-contracts for the weights W
+print("\n Weights defined -> shape check:")
+print(" W.shaope =",W.shape)
+assert W.shape == (d, 1),f"Cancel ! Weights should be ({d}, 1) but got {W.shape}"
+print(" ->Shape OK ! (Cpk 3.0-level)")
+
+
 
 
 
