@@ -54,8 +54,11 @@ assert W.shape == (d, 1),f"Cancel ! Weights should be ({d}, 1) but got {W.shape}
 print(" ->Shape OK ! (Cpk 3.0-level)")
 
 
+# 4. Calculate the output tensor Y (shape: n, 1) = (8, 1) - each slice gets a weighted score based on the toppings it has and their weights. This is a simple matrix multiplication (dot product) between X and W.
 
+#TL:DR We use the X @ W notation for matrix multiplication, which is a common and efficient way to calculate the output tensor Y in JAX. This operation will take each slice (row) of X, multiply it by the corresponding weights in W, and sum up the results to give us a single score for each slice.
 
+Flavor_pointer = X @ W # Shape (n, d) @ (d, 1) = (n, 1)
 
 
 
