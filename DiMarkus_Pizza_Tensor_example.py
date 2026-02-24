@@ -37,7 +37,9 @@ X = jnp.array([
 
 # TL:DR: Don´t get burned by the shape-contracts, always print the shapes and make sure they match your expectations.
 
-
+print("\n Weighted toppings created -> shape check:")
+print(f" X.shape == (n, d), f"cancel ! Pizza should be ({n}, {d}) but got {X.shape}")
+print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: defining the weights and calculating the output tensor Y.")      
 
 
 
