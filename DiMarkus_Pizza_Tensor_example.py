@@ -1,4 +1,4 @@
-Python jax.numpy as jnp
+import jax.numpy as jnp
 
 # 1. Define the dimensions of our tensor (Pizza example) and with my "Lean JAX Jedi mindset" which is - perfect parts in, perfect parts out, no more, no less. 
 
@@ -13,21 +13,21 @@ d = 5 # every slice has 5 toppings (pepperoni, mushroom, onion, olive, pineapple
 
 print("Process starts - axises defined.")
 print (f" n = {n} (slices)")
-print (f" d = {d} (tppings)")
+print (f" d = {d} (toppings)")
   
 #2. Creat the pizza tensor X (shape:n, d) 
 # Each row = one slice, each column = one topping (amount 0 - 10)
 
 X = jnp.array([
   
-  [2,3,0,1,0] # slice 1: cheese 2, Pepperoni 3, Mushroom 0, Onion 1, Olive 0 that are the d = 5 toppings
-  [1,0,4,0,2] # slice 2: cheese 1, Pepperoni 0, Mushroom 4, Onion 0, Olive 2
-  [0,1,2,3,0] # slice 3: cheese 0, Pepperoni 1, Mushroom 2, Onion 3, Olive 0
-  [3,2,1,0,1] # slice 4: cheese 3, Pepperoni 2, Mushroom 1, Onion 0, Olive 1
-  [1,4,0,2,3] # slice 5: cheese 1, Pepperoni 4, Mushroom 0, Onion 2, Olive 3
-  [0,0,5,1,0] # slice 6: cheese 0, Pepperoni 0, Mushroom 5, Onion 1, Olive 0
-  [2,1,3,0,4] # slice 7: cheese 2, Pepperoni 1, Mushroom 3, Onion 0 , Olive 4
-   [1,2,1,4,2] # slice8: cheese1 , Pepperoni2 , Mushroom1 , Onion4 , Olive2
+  [2, 3, 0, 1, 0] # slice 1: cheese 2, Pepperoni 3, Mushroom 0, Onion 1, Olive 0 that are the d = 5 toppings
+  [1, 0, 4, 0, 2] # slice 2: cheese 1, Pepperoni 0, Mushroom 4, Onion 0, Olive 2
+  [0, 1, 2, 3, 0] # slice 3: cheese 0, Pepperoni 1, Mushroom 2, Onion 3, Olive 0
+  [3, 2, 1, 0, 1] # slice 4: cheese 3, Pepperoni 2, Mushroom 1, Onion 0, Olive 1
+  [1, 4, 0, 2, 3] # slice 5: cheese 1, Pepperoni 4, Mushroom 0, Onion 2, Olive 3
+  [0, 0, 5, 1, 0] # slice 6: cheese 0, Pepperoni 0, Mushroom 5, Onion 1, Olive 0
+  [2, 1, 3, 0, 4] # slice 7: cheese 2, Pepperoni 1, Mushroom 3, Onion 0 , Olive 4
+  [1, 2, 1, 4, 2] # slice8: cheese1 , Pepperoni2 , Mushroom1 , Onion4 , Olive2
    
   
 ]).astype(jnp.float32) # shape (n, d) = (8, 5)
@@ -38,7 +38,7 @@ X = jnp.array([
 # TL:DR: Don´t get burned by the shape-contracts, always print the shapes and make sure they match your expectations.
 
 print("\n Weighted toppings created -> shape check:")
-print(f" X.shape == (n, d), f"cancel ! Pizza should be ({n}, {d}) but got {X.shape}")
+print( X.shape == (n, d), f"cancel ! Pizza should be ({n}, {d}) but got {X.shape}")
 print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: defining the weights and calculating the output tensor Y.")      
 
 # We shot the first slice to understand the shape-contracts
@@ -62,7 +62,7 @@ flavor_pointer = X @ W # Shape (n, d) @ (d, 1) = (n, 1)
 
 # Cpk 3.0: Print + Check the shape-contracts for the output tensor 
 print("\n flavor_pointer calculated -> shape check:")
-print(" flavor_pointer.shape =", flavor_pointer.shape")
+print(" flavor_pointer.shape =", flavor_pointer.shape)
 assert flavor_pointer.shape == (n, 1), f"Cancel ! Output should be ({n}, 1) but got {flavor_pointer.shape}"
 print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: interpreting the results and maybe doing some more calculations based on the output tensor Y.")
 
