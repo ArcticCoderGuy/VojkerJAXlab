@@ -58,7 +58,14 @@ print(" ->Shape OK ! (Cpk 3.0-level)")
 
 #TL:DR We use the X @ W notation for matrix multiplication, which is a common and efficient way to calculate the output tensor Y in JAX. This operation will take each slice (row) of X, multiply it by the corresponding weights in W, and sum up the results to give us a single score for each slice.
 
-Flavor_pointer = X @ W # Shape (n, d) @ (d, 1) = (n, 1)
+flavor_pointer = X @ W # Shape (n, d) @ (d, 1) = (n, 1)
+
+# Cpk 3.0: Print + Check the shape-contracts for the output tensor 
+print("\n flavor_pointer calculated -> shape check:")
+print(" flavor_pointer.shape =", flavor_pointer.shape")
+assert flavor_pointer.shape == (n, 1), f"Cancel ! Output should be ({n}, 1) but got {flavor_pointer.shape}"
+print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: interpreting the results and maybe doing some more calculations based on the output tensor Y.")
 
 
+      
 
