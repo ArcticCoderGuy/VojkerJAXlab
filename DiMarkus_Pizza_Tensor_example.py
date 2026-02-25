@@ -67,5 +67,19 @@ assert flavor_pointer.shape == (n, 1), f"Cancel ! Output should be ({n}, 1) but 
 print(" -> Shape-contract check passed, (Cpk 3.0 level) ready for the next step: interpreting the results and maybe doing some more calculations based on the output tensor Y.")
 
 
-      
+#5 Show concrete results: print the flavor pointer for each slice, which is the weighted score based on the toppings and their weights. This will give us an idea of which slices are more flavorful based on the defined weights.
+
+print("\nFlavor pointer for each slice:")
+print("toppings", X[0, :])
+print("flavor_pointer", flavor_pointer[0, :])
+
+# End of Code - process accepted 
+
+print(" \n ✅ Pizza Tensor example completed successfully! All shape-contracts held, and the flavor pointer has been calculated for each slice. Ready for the next step in our JAX journey: maybe adding more features, calculating gradients, or even building a simple neural network to predict pizza ratings based on the toppings! Stay tuned for more JAX adventures. \n")
+
+print(" Perfect parts in, perfect parts out - the JAX Jedi mindset in action! Remember to always check your shape-contracts and print your tensors to ensure everything is as expected. This is key to writing clean and efficient JAX code. Until next time, may the JAX be with you! \n")
+
+print( "No canceling this pizza, it is a perfect slice of JAX code! 🍕✨")
+
+
 
